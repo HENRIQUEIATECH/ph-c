@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofia da Ciência da Computação</title>
+    <style>
+        /* Configurações Globais - Estilo Clássico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #36454F; /* Cor Grafite */
+            font-family: "Georgia", "Times New Roman", serif; /* Letras com Serifa */
+            line-height: 1.6;
+        }
+
+        a {
+            color: #556B2F; /* Verde Azeitona */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #3d4d22;
+        }
+
+        /* Cabeçalho e Menu */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            border-bottom: 1px solid #e0e0e0;
+            background-color: #ffffff;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #556B2F; /* Verde Azeitona */
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .menu-links {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            font-size: 1rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            font-size: 0.9rem;
+            border-left: 1px solid #ccc;
+            padding-left: 15px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-family: inherit;
+            color: #36454F;
+            cursor: pointer;
+        }
+
+        .lang-btn.active {
+            font-weight: bold;
+            color: #556B2F;
+        }
+
+        .btn-whatsapp {
+            background-color: #556B2F;
+            color: #ffffff !important;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #3d4d22;
+        }
+
+        /* Seção Principal */
+        .main-section {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+        }
+
+        /* Lado Esquerdo - Imagem e Iniciais */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 300px;
+            border: 1px solid #556B2F; /* Fino filete verde azeitona */
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .author-initials {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #556B2F;
+            letter-spacing: 2px;
+        }
+
+        /* Lado Direito - Conteúdo */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slogan {
+            font-style: italic;
+            font-size: 1.25rem;
+            color: #556B2F;
+            margin-bottom: 20px;
+            border-left: 3px solid #556B2F;
+            padding-left: 15px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #36454F;
+            font-weight: normal;
+        }
+
+        .intro-text {
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        /* Tópicos */
+        .topics-container {
+            margin-bottom: 35px;
+        }
+
+        .topic-item {
+            margin-bottom: 25px;
+        }
+
+        .topic-item h3 {
+            color: #556B2F;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: normal;
+            border-bottom: 1px dashed #e0e0e0;
+            padding-bottom: 4px;
+        }
+
+        .topic-item p {
+            text-align: justify;
+            font-size: 0.95rem;
+        }
+
+        /* Seção O Autor */
+        .author-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .author-section h2 {
+            color: #36454F;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .author-section p {
+            text-align: justify;
+            margin-bottom: 12px;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85rem;
+            color: #777777;
+            background-color: #fafafa;
+        }
+
+        /* Responsividade Básica */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .main-section {
+                grid-template-columns: 1fr;
+            }
+            .left-column {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">PH C  | Filòsofo da Ciência da Computação</div>
+        <nav>
+            <ul class="menu-links">
+                <li><a href="#filosofia" data-translate="menu-filosofia">Filosofia</a></li>
+                <li><a href="#topicos" data-translate="menu-topicos">Tópicos</a></li>
+                <li><a href="#autor" data-translate="menu-autor">O Autor</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button class="lang-btn" onclick="setLanguage('en')">English</button>
+                <button class="lang-btn active" onclick="setLanguage('pt')">Portugues</button>
+            </div>
+            <a href="https://wa.me/5564992962999" target="_blank" class="btn-whatsapp">Contato</a>
+        </nav>
+    </header>
+
+    <main class="main-section">
+        
+        <div class="left-column">
+            <img src="ph-c.png" alt="PH. C." class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="profile-img" style="display:none; flex-direction:column; justify-content:center;">
+                <span>[Imagem PNG]</span>
+                <span>200 x 300 px</span>
+            </div>
+            <div class="author-initials">PH. C.</div>
+        </div>
+
+        <div class="right-column" id="content-area">
+            
+            <div class="slogan" id="slogan-text">
+                "A tecnologia molda o código; a filosofia molda o propósito."
+            </div>
+
+            <h1 id="main-title">Filosofia da Ciência da Computação</h1>
+            
+            <p class="intro-text" id="intro-p">
+                A Ciência da Computação não se limita à construção de softwares e circuitos eficazes, mas expande-se na compreensão de como a lógica automatizada redefine as fronteiras da percepção humana e da estrutura existencial da sociedade contemporânea.
+            </p>
+
+            <div class="topics-container" id="topicos">
+                
+                <div class="topic-item">
+                    <h3 id="t1-title">IA – Inteligência Artificial</h3>
+                    <p id="t1-desc">A emulação do pensamento e da tomada de decisão através de sistemas de silício levanta questionamentos profundos sobre o que constitui a consciência, a autonomia deliberativa e a própria essência da inteligência mecânica diante do criador.</p>
+                </div>
+
+                <div class="topic-item">
+                    <h3 id="t2-title">Soluções para o Ser Humano Individual e Global</h3>
+                    <p id="t2-desc">A arquitetura computacional deve servir como um vetor de elevação. Individualmente, otimiza as capacidades cognitivas; globalmente, redefine a distribuição do conhecimento e aproxima soluções humanitárias para crises estruturais.</p>
+                </div>
+
+                <div class="topic-item">
+                    <h3 id="t3-title">Algoritmos Inteligentes</h3>
+                    <p id="t3-desc">Longe de serem ferramentas neutras, os algoritmos modernos atuam como filtros interpretativos da realidade física. Compreender sua ética interna e vieses matemáticos é vital para a preservação do livre-arbítrio.</p>
+                </div>
+
+                <div class="topic-item">
+                    <h3 id="t4-title">Ontologia da Vida</h3>
+                    <p id="t4-desc">A digitalização e a tradução do biológico em dados estruturados propõem uma nova ontologia: o que significa existir em um ecossistema híbrido onde o físico e o virtual convergem para o mesmo ser?</p>
+                </div>
+
+            </div>
+
+            <div class="author-section" id="autor">
+                <h2 id="author-title">O Autor PH. C.</h2>
+                <p id="author-desc">
+                    Pesquisador e pensador dedicado a analisar as conexões invisíveis entre a lógica matemática, o desenvolvimento computacional e as implicações humanísticas que guiarão a próxima era do desenvolvimento civilizatório. PH. C. além de Filósofo da Ciência da Computação, também é Artista Plástico, Escritor, trabalhou em tempos antigos na DELL Computer USA, e é formado em Teologia, HarvardX. Ama viajar e conhecer novos lugares e sua História, tem uma grande paixão por Veleiros, Bossa Nova, Fado e uma maravilhosa Gastronomia acompanhada por um vinho do Porto ou do Rio Grande do Sul. E claro, uma boa conversa, então não se acanhe e entre em contato. Obrigado.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 PH. C. Filṍsofo da Ciência da Computação. <span id="footer-text">Todos os direitos reservados.</span></p>
+        <p>&copy; Tecnologia. <span id="footer-text">iartium.com</span></p>        
+            <iframe src="https://ph-c-filosofo.blogspot.com/2026/06/ph-c.html" width="1" height="1" title="Iartium"></iframe>
+    </footer>
+
+    <script>
+        const translations = {
+            pt: {
+                "menu-filosofia": "Filosofia",
+                "menu-topicos": "Tópicos",
+                "menu-autor": "O Autor",
+                "slogan": '"A tecnologia molda o código; a filosofia molda o propósito."',
+                "title": "Filosofia da Ciência da Computação",
+                "intro": "A Ciência da Computação não se limita à construção de softwares e circuitos eficazes, mas expande-se na compreensão de como a lógica automatizada redefine as fronteiras da percepção humana e da estrutura existencial da sociedade contemporânea.",
+                "t1-t": "IA – Inteligência Artificial",
+                "t1-d": "A emulação do pensamento e da tomada de decisão através de sistemas de silício levanta questionamentos profundos sobre o que constitui a consciência, a autonomia deliberativa e a própria essência da inteligência mecânica diante do criador.",
+                "t2-t": "Soluções para o Ser Humano Individual e Global",
+                "t2-d": "A arquitetura computacional deve servir como um vetor de elevação. Individualmente, otimiza as capacidades cognitivas; globalmente, redefine a distribuição do conhecimento e aproxima soluções humanitárias para crises estruturais.",
+                "t3-t": "Algoritmos Inteligentes",
+                "t3-d": "Longe de serem ferramentas neutras, os algoritmos modernos atuam como filtros interpretativos da realidade física. Compreender sua ética interna e vieses matemáticos é vital para a preservação do livre-arbítrio.",
+                "t4-t": "Ontologia da Vida",
+                "t4-d": "A digitalização e a tradução do biológico em dados estruturados propõem uma nova ontologia: o que significa existir em um ecossistema híbrido onde o físico e o virtual convergem para o mesmo ser?",
+                "auth-t": "O Autor PH. C.",
+                "auth-d": "Pesquisador e pensador dedicado a analisar as conexões invisíveis entre a lógica matemática, o desenvolvimento computacional e as implicações humanísticas que guiarão a próxima era do desenvolvimento civilizatório. PH. C. além de Filósofo da Ciência da Computação, também é Artista Plástico, Escritor, trabalhou em tempos antigos na DELL Computer USA, e é formado em Teologia, HarvardX. Ama viajar e conhecer novos lugares e sua História, tem uma grande paixão por Veleiros, Bossa Nova, Fado e uma maravilhosa Gastronomia acompanhada por um vinho do Porto ou do Rio Grande do Sul. E claro, uma boa conversa, então não se acanhe e entre em contato. Obrigado.",
+                "foot": "Todos os direitos reservados."
+            },
+            en: {
+                "menu-filosofia": "Philosophy",
+                "menu-topicos": "Topics",
+                "menu-autor": "The Author",
+                "slogan": '"Technology shapes the code; philosophy shapes the purpose."',
+                "title": "Philosophy of Computer Science",
+                "intro": "Computer Science is not limited to constructing efficient software and circuits, but extends into understanding how automated logic redefines the boundaries of human perception and the existential fabric of contemporary society.",
+                "t1-t": "AI – Artificial Intelligence",
+                "t1-d": "The emulation of thought and decision-making through silicon systems raises deep questions about what constitutes consciousness, deliberative autonomy, and the very essence of mechanical intelligence before its creator.",
+                "t2-t": "Solutions for the Individual and Global Human Being",
+                "t2-d": "Computational architecture must serve as a vector of elevation. Individually, it optimizes cognitive capacities; globally, it redefines the distribution of knowledge and brings humanitarian solutions closer to structural crises.",
+                "t3-t": "Intelligent Algorithms",
+                "t3-d": "Far from being neutral tools, modern algorithms act as interpretive filters of physical reality. Understanding their internal ethics and mathematical biases is vital for preserving free will.",
+                "t4-t": "Ontology of Life",
+                "t4-d": "The digitization and translation of the biological into structured data propose a new ontology: what does it mean to exist in a hybrid ecosystem where the physical and virtual converge into the same being?",
+                "auth-t": "The Author PH. C.",
+                "auth-d": "Researcher and thinker dedicated to analyzing the invisible connections between mathematical logic, computational development, and humanistic implications that will guide the next era of civilizational development. Besides being a Philosopher of Computer Science, PH. C. is also a Visual Artist, Writer, previously worked at DELL Computer USA, and holds a degree in Theology from HarvardX. He loves traveling, exploring new places and their history, and has a great passion for Sailing, Bossa Nova, Fado, and a wonderful Gastronomy paired with a Port wine or one from Rio Grande do Sul. And of course, a good conversation, so don't hesitate to get in touch. Thank you.",
+                "foot": "All rights reserved."
+            }
+        };
+
+        function setLanguage(lang) {
+            // Atualiza botões ativos
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Tratamento seguro do evento de clique
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+
+            // Aplica traduções nos elementos de texto
+            document.querySelector('[data-translate="menu-filosofia"]').textContent = translations[lang]["menu-filosofia"];
+            document.querySelector('[data-translate="menu-topicos"]').textContent = translations[lang]["menu-topicos"];
+            document.querySelector('[data-translate="menu-autor"]').textContent = translations[lang]["menu-autor"];
+            
+            document.getElementById('slogan-text').textContent = translations[lang]["slogan"];
+            document.getElementById('main-title').textContent = translations[lang]["title"];
+            document.getElementById('intro-p').textContent = translations[lang]["intro"];
+            
+            document.getElementById('t1-title').textContent = translations[lang]["t1-t"];
+            document.getElementById('t1-desc').textContent = translations[lang]["t1-d"];
+            document.getElementById('t2-title').textContent = translations[lang]["t2-t"];
+            document.getElementById('t2-desc').textContent = translations[lang]["t2-d"];
+            document.getElementById('t3-title').textContent = translations[lang]["t3-t"];
+            document.getElementById('t3-desc').textContent = translations[lang]["t3-d"];
+            document.getElementById('t4-title').textContent = translations[lang]["t4-t"];
+            document.getElementById('t4-desc').textContent = translations[lang]["t4-d"];
+            
+            document.getElementById('author-title').textContent = translations[lang]["auth-t"];
+            document.getElementById('author-desc').textContent = translations[lang]["auth-d"];
+            document.getElementById('footer-text').textContent = translations[lang]["foot"];
+        }
+    </script>
+</body>
+</html>
