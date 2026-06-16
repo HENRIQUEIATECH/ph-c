@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Tech e as Falhas dos Algoritmos</title>
+    <style>
+        /* Configurações Globais - Estilo Clássico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #36454F; /* Cor Grafite */
+            font-family: "Georgia", "Times New Roman", serif; /* Letras com Serifa */
+            line-height: 1.6;
+        }
+
+        a {
+            color: #556B2F; /* Verde Azeitona */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #3d4d22;
+        }
+
+        /* Cabeçalho e Menu */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            border-bottom: 1px solid #e0e0e0;
+            background-color: #ffffff;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #556B2F; /* Verde Azeitona */
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .menu-links {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            font-size: 1rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            font-size: 0.9rem;
+            border-left: 1px solid #ccc;
+            padding-left: 15px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-family: inherit;
+            color: #36454F;
+            cursor: pointer;
+        }
+
+        .lang-btn.active {
+            font-weight: bold;
+            color: #556B2F;
+        }
+
+        .btn-whatsapp {
+            background-color: #556B2F;
+            color: #ffffff !important;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #3d4d22;
+        }
+
+        /* Seção Principal */
+        .main-section {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+        }
+
+        /* Lado Esquerdo - Imagem e Iniciais */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 300px;
+            border: 1px solid #556B2F; /* Fino filete verde azeitona */
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .author-initials {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #556B2F;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        /* Área de Temas Impactantes */
+        .impact-themes {
+            width: 200px;
+            text-align: left;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 15px;
+        }
+
+        .impact-themes h4 {
+            font-size: 1.05rem;
+            color: #36454F;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .impact-themes ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .impact-themes li {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .impact-themes a {
+            display: block;
+            border-bottom: 1px dashed transparent;
+        }
+
+        .impact-themes a:hover {
+            border-bottom-color: #3d4d22;
+        }
+
+        /* Lado Direito - Conteúdo */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slogan {
+            font-style: italic;
+            font-size: 1.25rem;
+            color: #556B2F;
+            margin-bottom: 20px;
+            border-left: 3px solid #556B2F;
+            padding-left: 15px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #36454F;
+            font-weight: normal;
+        }
+
+        .intro-text {
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        /* Tópicos */
+        .topics-container {
+            margin-bottom: 35px;
+        }
+
+        .topic-item {
+            margin-bottom: 25px;
+        }
+
+        .topic-item h3 {
+            color: #556B2F;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: normal;
+            border-bottom: 1px dashed #e0e0e0;
+            padding-bottom: 4px;
+        }
+
+        .topic-item p {
+            text-align: justify;
+            font-size: 0.95rem;
+        }
+
+        /* Seção O Autor */
+        .author-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .author-section h2 {
+            color: #36454F;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .author-section p {
+            text-align: justify;
+            margin-bottom: 12px;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85rem;
+            color: #777777;
+            background-color: #fafafa;
+        }
+
+        /* Responsividade Básica */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .main-section {
+                grid-template-columns: 1fr;
+            }
+            .left-column {
+                margin-bottom: 20px;
+            }
+            .impact-themes {
+                width: 100%;
+                max-width: 400px;
+                text-align: center;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">PH C  | Filósofo da Ciência da Computação</div>
+        <nav>
+            <ul class="menu-links">
+                <li><a href="#filosofia" data-translate="menu-filosofia">Filosofia</a></li>
+                <li><a href="#topicos" data-translate="menu-topicos">Tópicos</a></li>
+                <li><a href="#autor" data-translate="menu-autor">O Autor</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button class="lang-btn" onclick="setLanguage('en')">English</button>
+                <button class="lang-btn active" onclick="setLanguage('pt')">Portugues</button>
+            </div>
+            <a href="https://wa.me/5564992962999" target="_blank" class="btn-whatsapp">Contato</a>
+        </nav>
+    </header>
+
+    <main class="main-section">
+        
+        <div class="left-column">
+            <img src="ph-c.png" alt="PH. C." class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="profile-img" style="display:none; flex-direction:column; justify-content:center;">
+                <span>[Imagem PNG]</span>
+                <span>200 x 300 px</span>
+            </div>
+            <div class="author-initials">PH. C.</div>
+
+            <div class="impact-themes">
+                <h4>Temas Impactantes</h4>
+                <ul>
+                    <li>
+                        <a href="https://iartium.com/ph-c/big-tech.html" target="_blank">
+                            • Big Tech e as Falhas dos algoritmos
+                        </a>
+                    </li>
+                    <li>
+                        • Grandes Big Tech perdem 200 Milhões de usuários de PIX
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="right-column" id="content-area">
+            
+            <div class="slogan" id="slogan-text">
+                "A tecnologia molda o código; a filosofia molda o propósito."
+            </div>
+
+            <h1 id="main-title">Big Tech e as Falhas dos Algoritmos</h1>
+            
+            <p class="intro-text" id="intro-p">
+                Aqui está o seu texto revisado, refinado e organizado em tópicos com uma linguagem madura, filosófica e de forte impacto técnico-social. Ele foi estruturado sob medida para se encaixar perfeitamente como uma nova seção ou conjunto de tópicos dentro do seu site sobre Filosofia da Ciência da Computação.
+            </p>
+
+            <div class="topics-container" id="topicos">
+                
+                <div class="topic-item">
+                    <h3 id="t1-title">O Colapso do Suporte Humano</h3>
+                    <p id="t1-desc">Empresas de tecnologia que automatizam completamente seu atendimento, recusando-se a fornecer um canal direto e humano (como um e-mail oficial de suporte), operam sob um algoritmo estruturalmente falho. A ausência de contato humano elimina a segurança jurídica e devasta a confiança do usuário no ecossistema digital.</p>
+                </div>
+
+                <div class="topic-item">
+                    <h3 id="t2-title">O Gap Sistêmico e o Impacto Psicológico</h3>
+                    <p id="t2-desc">Existe um abismo operacional que afeta milhões de pessoas diariamente. As falhas automatizadas de suporte geram transtornos físicos e psicológicos severos. Em um sistema legal eficiente, essas corporações deveriam enfrentar indenizações bilionárias pelos danos causados pela negligência de suas máquinas.</p>
+                </div>
+
+                <div class="topic-item">
+                    <h3 id="t3-title">Bloqueios Arbitrários e Fraude de Direitos</h3>
+                    <p id="t3-desc">A suspensão ou bloqueio de perfis e contas sem justa causa clara e sem direito à defesa defrauda os direitos fundamentais do cidadão e do empreendedor digital. Plataformas que agem com essa arbitrariedade deveriam sofrer sanções imediatas, suspensão de suas atividades e multas severas.</p>
+                </div>
+
+                <div class="topic-item">
+                    <h3 id="t4-title">Vulnerabilidades Programadas e Intenção Maléfica</h3>
+                    <p id="t4-desc">O mercado digital convive com um vasto número de brechas operacionais (Gaps). Enquanto algumas são frutos de engenharia ineficiente, muitas outras são desenhadas intencionalmente para prender o usuário, monopolizar mercados e manipular o fluxo de informações para fins maléficos.</p>
+                </div>
+
+                <div class="topic-item">
+                    <h3 id="t5-title">A Urgência de uma Constituição Digital</h3>
+                    <p id="t5-desc">O cenário atual exige a criação imediata de uma Carta Constitucional Digital global. Essa legislação deve proteger o trabalho dos programadores e a soberania de seus códigos, blindar as empresas idôneas e garantir salvaguardas intransponíveis para a segurança de todos os usuários.</p>
+                </div>
+
+                <div class="topic-item">
+                    <h3 id="t6-title">A Guerra Geopolítica Invisível</h3>
+                    <p id="t6-desc">A internet transformou-se no principal teatro de uma guerra geopolítica desenfreada e desregulamentada. Essa disputa sem leis dita os rumos do comércio global, manipula a política interna e ameaça diretamente a soberania das nações, utilizando o código de programação como arma de influência de massa.</p>
+                </div>
+
+            </div>
+
+            <div class="author-section" id="autor">
+                <h2 id="author-title">O Autor PH. C.</h2>
+                <p id="author-desc">
+                    Pesquisador e pensador dedicado a analisar as conexões invisíveis entre a lógica matemática, o desenvolvimento computacional e as implicações humanísticas que guiarão a próxima era do desenvolvimento civilizatório. PH. C. além de Filósofo da Ciência da Computação, também é Artista Plástico, Escritor, trabalhou em tempos antigos na DELL Computer USA, e é formado em Teologia, HarvardX. Ama viajar e conhecer novos lugares e sua História, tem uma grande paixão por Veleiros, Bossa Nova, Fado e uma maravilhosa Gastronomia acompanhada por um vinho do Porto ou do Rio Grande do Sul. E claro, uma boa conversa, então não se acanhe e entre em contato. Obrigado.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 PH. C. Filósofo da Ciência da Computação. <span id="footer-text">Todos os direitos reservados.</span></p>
+        <p>&copy; Tecnologia. <span id="footer-text">iartium.com</span></p>        
+        <iframe src="https://ph-c-filosofo.blogspot.com/p/big-tech-e-as-falhas-dos-algoritmos.html" width="1" height="1" title="Iartium"></iframe>
+    </footer>
+
+    <script>
+        const translations = {
+            pt: {
+                "menu-filosofia": "Filosofia",
+                "menu-topicos": "Tópicos",
+                "menu-autor": "O Autor",
+                "slogan": '"A tecnologia molda o código; a filosofia molda o propósito."',
+                "title": "Big Tech e as Falhas dos Algoritmos",
+                "intro": "Aqui está o seu texto revisado, refinado e organizado em tópicos com uma linguagem madura, filosófica e de forte impacto técnico-social. Ele foi estruturado sob medida para se encaixar perfeitamente como uma nova seção ou conjunto de tópicos dentro do seu site sobre Filosofia da Ciência da Computação.",
+                "t1-t": "O Colapso do Suporte Humano",
+                "t1-d": "Empresas de tecnologia que automatizam completamente seu atendimento, recusando-se a fornecer um canal direto e humano (como um e-mail oficial de suporte), operam sob um algoritmo estruturalmente falho. A ausência de contato humano elimina a segurança jurídica e devasta a confiança do usuário no ecossistema digital.",
+                "t2-t": "O Gap Sistêmico e o Impacto Psicológico",
+                "t2-d": "Existe um abismo operacional que afeta milhões de pessoas diariamente. As falhas automatizadas de suporte geram transtornos físicos e psicológicos severos. Em um sistema legal eficiente, essas corporações deveriam enfrentar indenizações bilionárias pelos danos causados pela negligência de suas máquinas.",
+                "t3-t": "Bloqueios Arbitrários e Fraude de Direitos",
+                "t3-d": "A suspension ou bloqueio de perfis e contas sem justa causa clara e sem direito à defesa defrauda os direitos fundamentais do cidadão e do empreendedor digital. Plataformas que agem com essa arbitrariedade deveriam sofrer sanções imediatas, suspensão de suas atividades e multas severas.",
+                "t4-t": "Vulnerabilidades Programadas e Intenção Maléfica",
+                "t4-d": "O mercado digital convive com um vasto número de brechas operacionais (Gaps). Enquanto algumas são frutos de engenharia ineficiente, muitas outras são desenhadas intencionalmente para prender o usuário, monopolizar mercados e manipular o fluxo de informações para fins maléficos.",
+                "t5-t": "A Urgência de uma Constituição Digital",
+                "t5-d": "O cenário atual exige a criação imediata de uma Carta Constitucional Digital global. Essa legislação deve proteger o trabalho dos programadores e a soberania de seus códigos, blindar as empresas idôneas e garantir salvaguardas intransponíveis para a segurança de todos os usuários.",
+                "t6-t": "A Guerra Geopolítica Invisível",
+                "t6-d": "A internet transformou-se no principal teatro de uma guerra geopolítica desenfreada e desregulamentada. Essa disputa sem leis dita os rumos do comércio global, manipula a política interna e ameaça diretamente a soberania das nações, utilizando o código de programação como arma de influência de massa.",
+                "auth-t": "O Autor PH. C.",
+                "auth-d": "Pesquisador e pensador dedicado a analisar as conexões invisíveis entre a lógica matemática, o desenvolvimento computacional e as implicações humanísticas que guiarão a próxima era do desenvolvimento civilizatório. PH. C. além de Filósofo da Ciência da Computação, também é Artista Plástico, Escritor, trabalhou em tempos antigos na DELL Computer USA, e é formado em Teologia, HarvardX. Ama viajar e conhecer novos lugares e sua História, tem uma grande paixão por Veleiros, Bossa Nova, Fado e uma maravilhosa Gastronomia acompanhada por um vinho do Porto ou do Rio Grande do Sul. E claro, uma boa conversa, então não se acanhe e entre em contato. Obrigado.",
+                "foot": "Todos os direitos reservados."
+            },
+            en: {
+                "menu-filosofia": "Philosophy",
+                "menu-topicos": "Topics",
+                "menu-autor": "The Author",
+                "slogan": '"Technology shapes the code; philosophy shapes the purpose."',
+                "title": "Big Tech and Algorithm Failures",
+                "intro": "Here is your text revised, refined, and organized into topics with a mature, philosophical language and a strong technical-social impact. It has been tailored to fit perfectly as a new section or set of topics within your website on Philosophy of Computer Science.",
+                "t1-t": "The Collapse of Human Support",
+                "t1-d": "Tech companies that completely automate their customer service, refusing to provide a direct and human channel (such as an official support email), operate under a structurally flawed algorithm. The absence of human contact eliminates legal security and devastates user trust in the digital ecosystem.",
+                "t2-t": "The Systemic Gap and Psychological Impact",
+                "t2-d": "There is an operational abyss that affects millions of people daily. Automated support failures generate severe physical and psychological distress. In an efficient legal system, these corporations should face billions in damages for the harm caused by the negligence of their machines.",
+                "t3-t": "Arbitrary Bans and Rights Fraud",
+                "t3-d": "The suspension or blocking of profiles and accounts without clear just cause and without the right to defense defrauds the fundamental rights of citizens and digital entrepreneurs. Platforms acting with this arbitrariness should face immediate sanctions, suspension of their activities, and severe fines.",
+                "t4-t": "Programmed Vulnerabilities and Malicious Intent",
+                "t4-d": "The digital market coexists with a vast number of operational loopholes (Gaps). While some are the result of inefficient engineering, many others are intentionally designed to trap the user, monopolize markets, and manipulate the flow of information for malicious purposes.",
+                "t5-t": "The Urgency of a Digital Constitution",
+                "t5-d": "The current scenario demands the immediate creation of a global Digital Constitutional Charter. This legislation must protect the work of programmers and the sovereignty of their code, shield reputable companies, and guarantee insurmountable safeguards for the security of all users.",
+                "t6-t": "The Invisible Geopolitical War",
+                "t6-d": "The internet has turned into the main theater of a rampant and unregulated geopolitical war. This lawless dispute dictates the paths of global trade, manipulates internal politics, and directly threatens the sovereignty of nations, using programming code as a weapon of mass influence.",
+                "auth-t": "The Author PH. C.",
+                "auth-d": "Researcher and thinker dedicated to analyzing the invisible connections between mathematical logic, computational development, and humanistic implications that will guide the next era of civilizational development. Besides being a Philosopher of Computer Science, PH. C. is also a Visual Artist, Writer, previously worked at DELL Computer USA, and holds a degree in Theology from HarvardX. He loves traveling, exploring new places and their history, and has a great passion for Sailing, Bossa Nova, Fado, and a wonderful Gastronomy paired with a Port wine or one from Rio Grande do Sul. And of course, a good conversation, so don't hesitate to get in touch. Thank you.",
+                "foot": "All rights reserved."
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+
+            document.querySelector('[data-translate="menu-filosofia"]').textContent = translations[lang]["menu-filosofia"];
+            document.querySelector('[data-translate="menu-topicos"]').textContent = translations[lang]["menu-topicos"];
+            document.querySelector('[data-translate="menu-autor"]').textContent = translations[lang]["menu-autor"];
+            
+            document.getElementById('slogan-text').textContent = translations[lang]["slogan"];
+            document.getElementById('main-title').textContent = translations[lang]["title"];
+            document.getElementById('intro-p').textContent = translations[lang]["intro"];
+            
+            document.getElementById('t1-title').textContent = translations[lang]["t1-t"];
+            document.getElementById('t1-desc').textContent = translations[lang]["t1-d"];
+            document.getElementById('t2-title').textContent = translations[lang]["t2-t"];
+            document.getElementById('t2-desc').textContent = translations[lang]["t2-d"];
+            document.getElementById('t3-title').textContent = translations[lang]["t3-t"];
+            document.getElementById('t3-desc').textContent = translations[lang]["t3-d"];
+            document.getElementById('t4-title').textContent = translations[lang]["t4-t"];
+            document.getElementById('t4-desc').textContent = translations[lang]["t4-d"];
+            document.getElementById('t5-title').textContent = translations[lang]["t5-t"];
+            document.getElementById('t5-desc').textContent = translations[lang]["t5-d"];
+            document.getElementById('t6-title').textContent = translations[lang]["t6-t"];
+            document.getElementById('t6-desc').textContent = translations[lang]["t6-d"];
+            
+            document.getElementById('author-title').textContent = translations[lang]["auth-t"];
+            document.getElementById('author-desc').textContent = translations[lang]["auth-d"];
+            document.getElementById('footer-text').textContent = translations[lang]["foot"];
+        }
+    </script>
+</body>
+</html>
