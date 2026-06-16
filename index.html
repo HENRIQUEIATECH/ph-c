@@ -127,6 +127,42 @@
             font-weight: bold;
             color: #556B2F;
             letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        /* Nova área de Temas Impactantes */
+        .impact-themes {
+            width: 200px;
+            text-align: left;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 15px;
+        }
+
+        .impact-themes h4 {
+            font-size: 1.05rem;
+            color: #36454F;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .impact-themes ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .impact-themes li {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .impact-themes a {
+            display: block;
+            border-bottom: 1px dashed transparent;
+        }
+
+        .impact-themes a:hover {
+            border-bottom-color: #3d4d22;
         }
 
         /* Lado Direito - Conteúdo */
@@ -221,13 +257,19 @@
             .left-column {
                 margin-bottom: 20px;
             }
+            .impact-themes {
+                width: 100%;
+                max-width: 400px;
+                text-align: center;
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">PH C  | Filòsofo da Ciência da Computação</div>
+        <div class="logo">PH C  | Filósofo da Ciência da Computação</div>
         <nav>
             <ul class="menu-links">
                 <li><a href="#filosofia" data-translate="menu-filosofia">Filosofia</a></li>
@@ -251,6 +293,20 @@
                 <span>200 x 300 px</span>
             </div>
             <div class="author-initials">PH. C.</div>
+
+            <div class="impact-themes">
+                <h4>Temas Impactantes</h4>
+                <ul>
+                    <li>
+                        <a href="https://iartium.com/ph-c/big-tech.html" target="_blank">
+                            • Big Tech e as Falhas dos algoritmos
+                        </a>
+                    </li>
+                    <li>
+                        • Grandes Big Tech perdem 200 Milhões de usuários de PIX
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="right-column" id="content-area">
@@ -279,7 +335,7 @@
 
                 <div class="topic-item">
                     <h3 id="t3-title">Algoritmos Inteligentes</h3>
-                    <p id="t3-desc">Longe de serem ferramentas neutras, os algoritmos modernos atuam como filtros interpretativos da realidade física. Compreender sua ética interna e vieses matemáticos é vital para a preservação do livre-caminho.</p>
+                    <p id="t3-desc">Longe de serem ferramentas neutras, os algoritmos modernos atuam como filtros interpretativos da realidade física. Compreender sua ética interna e vieses matemáticos é vital para a preservação do livre-arbítrio.</p>
                 </div>
 
                 <div class="topic-item">
@@ -300,9 +356,9 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 PH. C. Filṍsofo da Ciência da Computação. <span id="footer-text">Todos os direitos reservados.</span></p>
+        <p>&copy; 2026 PH. C. Filósofo da Ciência da Computação. <span id="footer-text">Todos os direitos reservados.</span></p>
         <p>&copy; Tecnologia. <span id="footer-text">iartium.com</span></p>        
-            <iframe src="https://ph-c-filosofo.blogspot.com/2026/06/ph-c.html" width="1" height="1" title="Iartium"></iframe>
+        <iframe src="https://ph-c-filosofo.blogspot.com/2026/06/ph-c.html" width="1" height="1" title="Iartium"></iframe>
     </footer>
 
     <script>
@@ -315,7 +371,7 @@
                 "title": "Filosofia da Ciência da Computação",
                 "intro": "A Ciência da Computação não se limita à construção de softwares e circuitos eficazes, mas expande-se na compreensão de como a lógica automatizada redefine as fronteiras da percepção humana e da estrutura existencial da sociedade contemporânea.",
                 "t1-t": "IA – Inteligência Artificial",
-                "t1-d": "A emulação do pensamento e da tomada de decisão através de sistemas de silício levanta questionamentos profundos sobre o que constitui a consciência, a autonomia deliberativa e a própria essência da inteligência mecânica diante do criador.",
+                "t1-d": "A emulação do pensamento e da tomada de decisão através de sistemas de silício levanta questionamentos profundos sobre o que constitui a consciência, a autonomia deliberativa e a própria essence da inteligência mecânica diante do criador.",
                 "t2-t": "Soluções para o Ser Humano Individual e Global",
                 "t2-d": "A arquitetura computacional deve servir como um vetor de elevação. Individualmente, otimiza as capacidades cognitivas; globalmente, redefine a distribuição do conhecimento e aproxima soluções humanitárias para crises estruturais.",
                 "t3-t": "Algoritmos Inteligentes",
@@ -348,15 +404,11 @@
         };
 
         function setLanguage(lang) {
-            // Atualiza botões ativos
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            
-            // Tratamento seguro do evento de clique
             if (event && event.target) {
                 event.target.classList.add('active');
             }
 
-            // Aplica traduções nos elementos de texto
             document.querySelector('[data-translate="menu-filosofia"]').textContent = translations[lang]["menu-filosofia"];
             document.querySelector('[data-translate="menu-topicos"]').textContent = translations[lang]["menu-topicos"];
             document.querySelector('[data-translate="menu-autor"]').textContent = translations[lang]["menu-autor"];
