@@ -114,6 +114,7 @@
             border: 1px solid #556B2F; /* Fino filete verde azeitona */
             background-color: #f9f9f9;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             color: #999;
@@ -157,12 +158,37 @@
         }
 
         .impact-themes a {
-            display: block;
+            display: inline-block;
             border-bottom: 1px dashed transparent;
         }
 
         .impact-themes a:hover {
             border-bottom-color: #3d4d22;
+        }
+
+        /* Estilos da Capa do Livro na Esquerda */
+        .book-container {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .book-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #36454F;
+            margin: 10px 0 5px 0;
+            line-height: 1.2;
+        }
+
+        .amazon-link {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #556B2F;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Lado Direito - Conteúdo */
@@ -288,7 +314,7 @@
         
         <div class="left-column">
             <img src="ph-c.png" alt="PH. C." class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="profile-img" style="display:none; flex-direction:column; justify-content:center;">
+            <div class="profile-img" style="display:none;">
                 <span>[Imagem PNG]</span>
                 <span>200 x 300 px</span>
             </div>
@@ -306,6 +332,18 @@
                         • Grandes Big Tech perdem 200 Milhões de usuários de PIX
                     </li>
                 </ul>
+
+                <div class="book-container">
+                    <img src="book.png" alt="The Ontology of the Qubit Cover" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="profile-img" style="display:none;">
+                        <span>[Imagem PNG]</span>
+                        <span>200 x 300 px</span>
+                    </div>
+                    <div class="book-title">The Ontology of the Qubit</div>
+                    <a href="https://www.amazon.com" target="_blank" class="amazon-link">Read more on Amazon</a>
+                    <div class="book-title">A Ontologia do Qubit</div>
+                    <a href="https://a.co/d/06w0sIXS" target="_blank" class="amazon-link">Versão em Português no Amazon</a>
+                </div>
             </div>
         </div>
 
@@ -359,7 +397,7 @@
         <p>&copy; 2026 PH. C. Filósofo da Ciência da Computação. <span id="footer-text">Todos os direitos reservados.</span></p>
         <p>&copy; Tecnologia. <span id="footer-text">iartium.com</span></p>        
         <iframe src="https://ph-c-filosofo.blogspot.com/2026/06/ph-c.html" width="1" height="1" title="Iartium"></iframe>
-    </footer>
+    </header>
 
     <script>
         const translations = {
